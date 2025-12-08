@@ -1,0 +1,92 @@
+/* Import Poppins from Google Fonts and set as the default font-family */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --font-sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+}
+
+.landingPageContainer {
+    width : 100vw;
+    height : 100vh;
+    /* public/ is served at app root — reference assets with absolute path */
+    background: url('/assets/background.png');
+    background-repeat : no-repeat;
+    background-size : cover;
+    color : white;
+}
+
+.landingPageContainer .navbar {
+    display : flex;
+    flex-direction : row;
+    justify-content : space-between;
+    padding-inline : 1.2rem;
+    padding-block : 1.5rem;
+}
+
+.landingPageContainer .navbar .nav-header h2 {
+    font-size : 1.8rem;
+    font-weight : 500;
+}
+
+.landingPageContainer .navbar .nav-list {
+    display : flex;
+    flex-direction : row;
+    gap : 1.6rem;
+    align-items : center;
+}
+.nav-list-item .auth-link {
+    color : white;
+    text-decoration : none;
+    cursor : default;
+}
+
+.landingPageContent {
+    height : 80vh;
+    display : flex;
+    flex-direction : row;
+    justify-content : space-between;
+    align-items : center;
+    padding-inline : 1.8rem;
+    padding-bottom : 1rem;
+}
+
+.landingPageContent .content-text {
+    display : flex;
+    flex-direction : column;
+}
+
+.content-text .title {
+    font-size : 3.1rem;
+    font-weight : 500;
+}
+
+.content-text .desc {
+    font-size : 1.25rem;
+    font-weight : 400;
+    color : rgba(255, 255, 255, 0.65);
+}
+
+.content-text [role="button"] {
+    width : fit-content;
+    background-color : #D97500;
+    padding : 0.4rem 0.75rem;
+    border-radius : 0.35rem;
+    margin-top : 1.25rem;
+}
+.content-text [role="button"] a {
+    font-size : 1.05rem;
+    color : white;
+    text-decoration : none;
+}
+
+.content-image img {
+    height : 35rem;
+    width : auto;
+    padding-right : 1rem;
+    padding-bottom : 1rem;
+}

@@ -1,0 +1,14 @@
+main {
+    height : 100vh;
+    width : 100vw;
+    background-image : url("https://cloudinary-marketing-res.cloudinary.com/image/upload/w_1000/q_auto/f_auto/viK_iceland.jpg");
+    background-repeat : no-repeat;
+    background-position : left;
+}
+
+.login-container {
+    width : 46.95rem !important;
+    height : 100vh !important;
+    margin-left : auto !important;
+    /* margin-right : auto !important; */
+}

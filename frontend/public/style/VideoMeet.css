@@ -1,0 +1,202 @@
+/* === MAIN CONTAINER === */
+.meetVideoContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(4, 1, 48);
+    overflow: hidden;
+    position: relative;
+}
+
+/* === VIDEO CONFERENCE AREA (LEFT SIDE) === */
+/* switched to grid for consistent stable layout */
+.conference-view {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 200px;
+    align-content: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: width 0.3s ease;
+    position: relative;
+    z-index: 1; /* sits below chat panel */
+}
+
+/* Remote participants’ videos */
+.conference-view video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.2rem;
+}
+
+/* === LOCAL USER VIDEO (bottom-left small preview) === */
+.meetUserVideo {
+    height: 25vh;
+    width: auto;
+    position: absolute;
+    bottom: 12vh;
+    left: 20px;
+    border-radius: 1.2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+}
+
+/* === CHAT WINDOW (RIGHT SIDE PANEL) === */
+.chat-room {
+    flex: 0 0 30vw;
+    max-width: 30vw;
+    height: 100%;
+    background-color: #f2f2f2;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 9; /* above buttons and videos */
+    position: relative;
+}
+
+/* Chat container internal layout */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-container h2 {
+    color: #222;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* === MESSAGE AREA === */
+.chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chat-messages ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-messages li {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 8px 12px;
+    line-height: 1.4;
+    max-width: 90%;
+    word-wrap: break-word;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chat-messages li b {
+    color: #293241;
+}
+
+/* === CHAT INPUT BOX AREA (BOTTOM OF CHAT WINDOW) === */
+.chatting-area {
+    padding: 10px 15px;
+    background-color: #eaeaea;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10; /* ensures chat input is above buttons at bottom */
+    position: sticky;
+    bottom: 0;
+}
+
+/* === BUTTON CONTAINER (BOTTOM CENTER) === */
+.button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 2; /* stays below chat */
+    width: 100%;
+}
+
+.button-container svg {
+    font-size: 2.4rem;
+}
+
+/* === RESPONSIVE BEHAVIOR === */
+@media (max-width: 1024px) {
+    .chat-room {
+        flex: 0 0 35vw;
+        max-width: 35vw;
+    }
+
+    .conference-view {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-auto-rows: 180px;
+    }
+}
+
+/* When small screens — chat slides up as bottom overlay */
+@media (max-width: 768px) {
+    .meetVideoContainer {
+        flex-direction: column;
+    }
+
+    .chat-room {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 50%;
+        max-width: 100%;
+        border-left: none;
+        border-top: 2px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.5);
+        background-color: #202020;
+        color: white;
+        z-index: 10;
+    }
+
+    .chat-messages li {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+
+    .chatting-area {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .meetUserVideo {
+        height: 20vh;
+        bottom: 55vh;
+    }
+
+    .conference-view {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        grid-auto-rows: 150px;
+    }
+}
+@media (max-width: 480px) {
+    .chat-room {
+        height: 60%;
+    }
+
+    .conference-view {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-auto-rows: 120px;
+    }
+
+    .meetUserVideo {
+        height: 15vh;
+        bottom: 65vh;
+    }
+}
