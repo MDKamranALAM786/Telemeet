@@ -16,7 +16,7 @@ import io from "socket.io-client";
 import "../../public/style/VideoMeet.css";
 import withAuth from "../utils/withAuth.jsx";
 
-const server_url = "http://localhost:3000";
+const server_url = import.meta.env.VITE_SOCKET_SERVER_URL || "http://localhost:3000";
 
 const connections = {};
 
@@ -532,3 +532,4 @@ function VideoMeetComponent() {
 }
 
 export default withAuth(VideoMeetComponent);
+

@@ -42,7 +42,7 @@ export default function Authentication() {
         }
     };
 
-    let handleAuth = async () => {
+    let handleAuth = async (event) => {
         let setDefault = () => {
             setError("");
             setUsername("");
@@ -83,7 +83,7 @@ export default function Authentication() {
                             <Button variant={formState === 0 ? "contained" : "text"} onClick={() => {setFormState(0)}}>Sign In</Button>
                             <Button variant={formState === 1 ? "contained" : "text"} onClick={() => {setFormState(1)}}>Sign Up</Button>
                         </div>
-                        <Box component="form" noValidate sx={{ mt: 1 }}>
+                        <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={handleAuth}>
                             {formState === 1 && <>
                                 <TextField
                                     margin="normal"
@@ -129,7 +129,7 @@ export default function Authentication() {
                             />
                             <p style={{color : "red"}}>{error}</p>
                             <Button
-                                type="button"
+                                type="submit"
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
@@ -145,3 +145,4 @@ export default function Authentication() {
         </ThemeProvider>
     );
 }
+
