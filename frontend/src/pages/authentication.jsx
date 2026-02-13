@@ -150,5 +150,3 @@ function Authentication() {
     );
 }
 
-export default withAuth(Authentication);
-
