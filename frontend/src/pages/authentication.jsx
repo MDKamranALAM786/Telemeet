@@ -16,7 +16,7 @@ import {AuthContext} from "../contexts/AuthContext.jsx";
 
 const defaultTheme = createTheme();
 
-function Authentication() {
+export default function Authentication() {
     const router = useNavigate();
 
     const [username, setUsername] = useState("");
