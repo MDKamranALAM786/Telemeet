@@ -1,4 +1,5 @@
 import {useState, useContext} from "react";
+import {useNavigate} from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,6 +17,8 @@ import {AuthContext} from "../contexts/AuthContext.jsx";
 const defaultTheme = createTheme();
 
 export default function Authentication() {
+    const router = useNavigate();
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
@@ -53,6 +56,7 @@ export default function Authentication() {
                 // login
                 let response = await handleLogin(username, password);
                 setDefault();
+                router("/home");
             } else {
                 // register
                 let response = await handleRegister(name, username, email, password);
