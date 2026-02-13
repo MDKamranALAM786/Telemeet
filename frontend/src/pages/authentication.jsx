@@ -16,7 +16,7 @@ import {AuthContext} from "../contexts/AuthContext.jsx";
 
 const defaultTheme = createTheme();
 
-export default function Authentication() {
+function Authentication() {
     const router = useNavigate();
 
     const [username, setUsername] = useState("");
@@ -149,4 +149,6 @@ export default function Authentication() {
         </ThemeProvider>
     );
 }
+
+export default withAuth(Authentication);
 
